@@ -127,11 +127,26 @@ if (import.meta.url === `file://${process.argv[1]}`) {
       next();
     }
   });
+  
 
   // serve after you added all api
   admin.express.serve(app)
 
-  admin.discoverDatabases();
+  admin.discoverDatabases().then(async () => {
+    if (!await admin.resource('user').get([Filters.EQ('email', 'adminforth@adminforth.dev')])) {
+      await admin.resource('user').create({
+        email: 'adminforth@adminforth.dev',
+        passwordHash: await AdminForth.Utils.generatePasswordHash('adminforth'),
+      });
+    }
+
+    if (!await admin.resource('user').get([Filters.EQ('email', 'demo@adminforth.dev')])) {
+      await admin.resource('user').create({
+        email: 'demo@adminforth.dev',
+        passwordHash: await AdminForth.Utils.generatePasswordHash('demo'),
+      });
+    }
+  });
 
   app.listen(port, () => {
     console.log(`\n⚡ AdminForth is available at http://localhost:${port}\n`)

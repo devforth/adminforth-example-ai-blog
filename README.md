@@ -27,4 +27,4 @@ npm ci
 npm run dev
 ```
 
-Go to http://localhost:3000/admin/ and create a new post.
+Go to http://localhost:3000/admin/ , login with name `adminforth@adminforth.dev` and password `adminforth`.
