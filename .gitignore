@@ -1,0 +1,14 @@
+
+# Elastic Beanstalk Files
+node_modules
+seo/node_modules
+.env
+db/
+
+# terraform files
+.terraform
+terraform.tfstate
+terraform.tfstate.backup
+
+# tar
+*.tar

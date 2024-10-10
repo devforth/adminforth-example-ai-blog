@@ -1,0 +1,9 @@
+.env
+node_modules
+seo/node_modules
+.git
+db
+*.tar
+.terraform*
+terraform*
+*.tf
